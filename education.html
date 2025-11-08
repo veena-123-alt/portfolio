@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education Timeline</title>
+  <link rel="stylesheet" href="education.css">
+  <link rel="stylesheet" href="form.css">
+  <link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script>
+  fetch("navbar.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("navbar-placeholder").innerHTML = data;
+
+      // ✅ Now the toggle-switch exists — we can add the listener
+      const checkbox = document.getElementById('toggle-switch');
+      if (checkbox) {
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+          document.body.classList.add('dark');
+          checkbox.checked = true;
+        }
+
+        checkbox.addEventListener('change', () => {
+          document.body.classList.toggle('dark');
+          // Save theme preference
+          const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          localStorage.setItem('theme', theme);
+        });
+      }
+    });
+</script>
+
+
+  <section class="section">
+    <h1 class="section-title">FORMAL <span class="highlight">EDUCATION</span></h1>
+
+    <div class="cards">
+      <div class="card">
+        <!-- <img src="f8317c4c-36b4-44f1-aa01-b00e19d051d9.png" alt="School Logo" class="card-img"> -->
+        <h2 class="card-title">Rainbow Montessori School</h2>
+        <p class="card-desc">
+          <strong>High School</strong><br>
+          <ul class="work-list">
+            <li>Participation in all cultural events</li>
+            <li>Member of the School Choir</li>
+            <li>Science Exhibition Participant</li>
+          </ul>
+        </p>
+      </div>
+
+      <div class="card">
+        <!-- <img src="f8317c4c-36b4-44f1-aa01-b00e19d051d9.png" alt="College Logo" class="card-img"> -->
+        <h2 class="card-title">Chandigarh University</h2>
+        <p class="card-desc">
+          <strong>Bachelor of Engineering</strong><br>
+          <ul class="work-list">
+            <li>Specialization in Data Science</li>
+            <li>Active participation in many Project</li>
+            <li>Active participation in cultural events</li>
+          </ul>
+        </p>
+      </div>
+
+      <div class="card">
+        <!-- <img src="f8317c4c-36b4-44f1-aa01-b00e19d051d9.png" alt="Extra Institution Logo" class="card-img"> -->
+        <h2 class="card-title">Coursera & Others</h2>
+        <p class="card-desc">
+          <strong>Online Certifications</strong><br>
+          <ul class="work-list">
+            <li>Design Thinking and Creativity for Innovation</li>
+            <li>Python for Data Science, AI & Development</li>
+            <li>cPanel & WHM Certifications</li>
+            <li>IPv6 Certification by Hurricane Electric</li>
+          </ul>
+        </p>
+      </div>
+    </div>
+  </section>
+ <div id="form"></div>
+
+<script>
+  fetch("form.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("form").innerHTML = data;
+    });
+</script>
+</body>
+</html>

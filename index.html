@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ankit Kumar - Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="navbar.css" />
+
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="dark">
+  <div id="particles-js"></div>
+  <div id="navbar-placeholder"></div>
+
+
+  <section class="hero">
+    <h1>Hi 👋, I'm <span>Veena</span></h1>
+    <p>I am into <span class="typing-text">Programming</span>.</p>
+
+    <div class="social-icons">
+      <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter"></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn"></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub"></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mastodon.svg" alt="Mastodon"></a>
+    </div>
+  </section>
+<script>
+  const phrases = ["Programming","Frontend","Open Source", "Web Development"];
+  const typingSpan = document.querySelector(".typing-text");
+  let i = 0; // phrase index
+  let j = 0; // character index
+  let isDeleting = false;
+
+  function typeEffect() {
+    const current = phrases[i];
+    if (isDeleting) {
+      typingSpan.textContent = current.substring(0, j--);
+      if (j < 0) {
+        isDeleting = false;
+        i = (i + 1) % phrases.length;
+        setTimeout(typeEffect, 500);
+      } else {
+        setTimeout(typeEffect, 50);
+      }
+    } else {
+      typingSpan.textContent = current.substring(0, j++);
+      if (j > current.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, 1000);
+      } else {
+        setTimeout(typeEffect, 100);
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", typeEffect);
+</script>
+
+
+  <section class="contact-section">
+
+    <p class="quote">❝ The best way to predict the future is to create it. ❞</p>
+
+    <div class="contact-container">
+      <div class="illustration">
+        <img src="illustration.png" alt="Illustration" />
+      </div>
+
+      <div class="form-container">
+        <h2>Get in Touch</h2>
+        <form>
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Email Address" required />
+          <textarea rows="4" placeholder="Type your Message" required></textarea>
+          <button type="submit">
+            Send <span>🚀</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- 👇 Social Icons inside the section, at bottom -->
+    <div class="social-icons">
+      <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" /></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" /></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" /></a>
+    </div>
+
+  </section>
+
+  <!-- particles.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS.load('particles-js', 'particles.json', function () {
+      console.log('particles.js loaded');
+    });
+
+    document.getElementById('toggle-switch').addEventListener('change', () => {
+      document.body.classList.toggle('dark');
+    });
+  </script>
+  
+<script>
+  fetch("navbar.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("navbar-placeholder").innerHTML = data;
+
+      // ✅ Now the toggle-switch exists — we can add the listener
+      const checkbox = document.getElementById('toggle-switch');
+      if (checkbox) {
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+          document.body.classList.add('dark');
+          checkbox.checked = true;
+        }
+
+        checkbox.addEventListener('change', () => {
+          document.body.classList.toggle('dark');
+          // Save theme preference
+          const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          localStorage.setItem('theme', theme);
+        });
+      }
+    });
+</script>
+</body>
+</html>

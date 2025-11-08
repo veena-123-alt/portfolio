@@ -1,0 +1,122 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fonts */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark {
+  background-color: #1f1f1f;
+  color: #fff;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background-color: #262626;
+  border-bottom: 1px solid #444;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ccc;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: #fff;
+}
+
+.nav-links a.active::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #8000ff;
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  border-radius: 2px;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  margin-bottom: 2%;
+  margin-right: 3%;
+}
+
+.toggle-label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://i.imgur.com/Zq5mDPW.png'); /* Replace with your day/night background */
+  background-size: cover;
+  border-radius: 50px;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 0 10px rgba(128, 0, 255, 0.4);
+}
+
+.toggle-thumb {
+  width: 26px;
+  height: 26px;
+  background-color: #c39aff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: left 0.3s;
+}
+
+#toggle-switch:checked + .toggle-label .toggle-thumb {
+  left: 32px;
+}
+
+/* Optional: light mode background */
+body:not(.dark) {
+  background-color: #f2f2f2;
+  color: #222;
+}
+
+body:not(.dark) .navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+body:not(.dark) .logo {
+  color: #222;
+}
+
+body:not(.dark) .nav-links a {
+  color: #444;
+}
+
+body:not(.dark) .nav-links a.active::after {
+  background: #6200ee;
+}

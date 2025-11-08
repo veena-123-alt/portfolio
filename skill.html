@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Skills</title>
+  <link rel="stylesheet" href="skill.css" />
+  <link rel="stylesheet" href="navbar.css" />
+  <link rel="stylesheet" href="form.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script>
+  fetch("navbar.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("navbar-placeholder").innerHTML = data;
+
+      // ✅ Now the toggle-switch exists — we can add the listener
+      const checkbox = document.getElementById('toggle-switch');
+      if (checkbox) {
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+          document.body.classList.add('dark');
+          checkbox.checked = true;
+        }
+
+        checkbox.addEventListener('change', () => {
+          document.body.classList.toggle('dark');
+          // Save theme preference
+          const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          localStorage.setItem('theme', theme);
+        });
+      }
+    });
+</script>
+
+
+  <section class="skills-section">
+  <h2><span>MY</span> <span class="highlight">SKILLS</span></h2>
+
+  <div class="skills-container">
+    <!-- PHP -->
+    <!-- <div class="skill-card" data-aos="fade-up">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/php.svg" alt="PHP" class="skill-icon">
+      <h3>Hypertext Pre-processor</h3>
+      <ul>
+        <li>PHP is a server-side scripting language used to build dynamic web applications and backend logic.</li>
+      </ul>
+    </div> -->
+
+    <!-- HTML -->
+    <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/html5.svg" alt="HTML" class="skill-icon">
+      <h3>HyperText Markup Language</h3>
+      <ul>
+        <li>HTML is the backbone of web pages used to structure content on the web.</li>
+      </ul>
+    </div>
+
+    <!-- CSS -->
+    <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/css3.svg" alt="CSS" class="skill-icon">
+      <h3>Cascading Style Sheets</h3>
+      <ul>
+        <li>CSS styles and layouts web pages with colors, fonts, animations, and responsiveness.</li>
+      </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <!-- <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/javascript.svg" alt="JavaScript" class="skill-icon">
+      <h3>JavaScript</h3>
+      <ul>
+        <li>JavaScript enables interactive functionality in web pages including DOM manipulation and dynamic content updates.</li>
+      </ul>
+    </div> -->
+
+    <!-- Git -->
+    <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/git.svg" alt="Git" class="skill-icon">
+      <h3>Git</h3>
+      <ul>
+        <li>Git is a distributed version control system used to track changes in source code during development.</li>
+      </ul>
+    </div>
+
+    <!-- Docker -->
+    <div class="skill-card" data-aos="fade-up" data-aos-delay="500">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/docker.svg" alt="Docker" class="skill-icon">
+      <h3>Docker</h3>
+      <ul>
+        <li>Docker enables developers to package applications into containers for easy deployment and scalability.</li>
+      </ul>
+    </div>
+
+    <!-- Kubernetes -->
+    <div class="skill-card" data-aos="fade-up" data-aos-delay="600">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/kubernetes.svg" alt="Kubernetes" class="skill-icon">
+      <h3>Kubernetes</h3>
+      <ul>
+        <li>Kubernetes is an open-source container orchestration system for automating application deployment and scaling.</li>
+      </ul>
+    </div>
+
+    <!-- CCNA -->
+    <!-- <div class="skill-card" data-aos="fade-up" data-aos-delay="700">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/cisco.svg" alt="CCNA" class="skill-icon">
+      <h3>CCNA</h3>
+      <ul>
+        <li>CCNA certification demonstrates knowledge in networking fundamentals, IP connectivity, and network access.</li>
+      </ul>
+    </div> -->
+
+    <!-- CCNP -->
+    <!-- <div class="skill-card" data-aos="fade-up" data-aos-delay="800">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/cisco.svg" alt="CCNP" class="skill-icon">
+      <h3>CCNP</h3>
+      <ul>
+        <li>CCNP certification validates skills in enterprise networking solutions, routing, switching, and troubleshooting.</li>
+      </ul>
+    </div> -->
+  </div>
+</section>
+
+
+   <div id="form"></div>
+
+<script>
+  fetch("form.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("form").innerHTML = data;
+    });
+</script>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  </script>
+
+</body>
+</html>
